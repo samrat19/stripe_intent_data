@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:stripe_intent_data/stripe_intent_data.dart';
 
 void main() {
-  String stripeSecretKey = 'sk_test_51IVOCEDsldlDrGbdxAd4UY8SwuWT9efngApyMZVza7qkD3byJty6UUt8aYdUsyDoXvlvM40DK6ifQVR77Hl3oIqB00Sjy3lCis';
+  String stripeSecretKey = 'sk_test_51';
   test('test my function', () async {
     var data = await StripeIntentData(
       currency: 'EUR',

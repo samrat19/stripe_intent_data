@@ -23,12 +23,10 @@ class StripeIntentData {
     String amount,
     String? customerID,
   ) async {
-    String _customerID = customerID == null
-        ? await _createCustomer(
+    String _customerID = customerID ?? await _createCustomer(
             name,
             emailID,
-          )
-        : 'cus_LjGBN8G9ehEU6P';
+          );
 
     var ephemeralKey = await _getEphemeralKey(_customerID);
     var intentResp = await _createStripePaymentIntent(amount, _customerID);

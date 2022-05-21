@@ -3,12 +3,12 @@ library stripe_intent_data;
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-class StripePaymentService {
+class StripeIntentData {
 
   final String stripeSecretKey;
   final String currency;
 
-  StripePaymentService({required this.stripeSecretKey, required this.currency});
+  StripeIntentData({required this.stripeSecretKey, required this.currency});
 
   Map<String, String> header() {
     return {

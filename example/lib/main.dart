@@ -11,5 +11,5 @@ void main() async {
     stripeSecretKey: stripeSecretKey,
   ).getStripeIntent('name', 'email ID', 'amount', 'customer ID if available otherwise null');
 
-  log(data.toString());
+  log(data.paymentIntentId.toString());
 }

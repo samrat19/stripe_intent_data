@@ -1,3 +1,7 @@
-## 0.0.1
+## 0.1.5
 
-* TODO: Describe initial release.
+* Get the charge details
+
+## 0.1.4
+* Get Intent Data
+

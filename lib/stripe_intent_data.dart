@@ -3,6 +3,8 @@ library stripe_intent_data;
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import 'response/charge_data.dart';
+
 class StripeIntentData {
 
   final String stripeSecretKey;
@@ -18,23 +20,25 @@ class StripeIntentData {
   }
 
   Future<Map<String, dynamic>> getStripeIntent(
-    String name,
-    String emailID,
-    String amount,
-    String? customerID,
-  ) async {
-    String _customerID = customerID ?? await _createCustomer(
-            name,
-            emailID,
-          );
+      String name,
+      String emailID,
+      String amount,
+      String? customerID,
+      ) async {
+    String _customerID = customerID ??
+        await _createCustomer(
+          name,
+          emailID,
+        );
 
     var ephemeralKey = await _getEphemeralKey(_customerID);
     var intentResp = await _createStripePaymentIntent(amount, _customerID);
 
     Map<String, dynamic> setupIntent = {
-      'payment_intent': intentResp['client_secret'],
+      'payment_intent_client_secret': intentResp['client_secret'],
       'customer': _customerID,
-      'ephemeral_key': ephemeralKey
+      'ephemeral_key': ephemeralKey,
+      'payment_intent_id': intentResp['id']
     };
 
     return setupIntent;
@@ -78,5 +82,15 @@ class StripeIntentData {
     Map<String, dynamic> intentResp = json.decode(intentResponse.body);
 
     return intentResp;
+  }
+
+  Future<ChargeData> getPaymentDetails(String paymentIntentID) async {
+    var response = await http.post(
+        Uri.parse(
+            'https://api.stripe.com/v1/payment_intents/$paymentIntentID/confirm'),
+        headers: header(),
+        body: {'payment_method': 'pm_card_visa'});
+    Map<String, dynamic> data = json.decode(response.body);
+    return ChargeData.fromJson(data['error']['payment_intent']['charges']['data'][0]);
   }
 }

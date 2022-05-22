@@ -9,7 +9,7 @@ void main() async {
   var data = await StripeIntentData(
     currency: 'EUR',
     stripeSecretKey: stripeSecretKey,
-  ).getStripeIntent('Disha Demo', 'disha2@demo.com', '2000', null);
+  ).getStripeIntent('name', 'email ID', 'amount', 'customer ID if available otherwise null');
 
   log(data.toString());
 }

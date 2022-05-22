@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import 'response/charge_data.dart';
+import 'response/intent_data.dart';
 
 class StripeIntentData {
 
@@ -19,7 +20,7 @@ class StripeIntentData {
     };
   }
 
-  Future<Map<String, dynamic>> getStripeIntent(
+  Future<IntentData> getStripeIntent(
       String name,
       String emailID,
       String amount,
@@ -34,14 +35,14 @@ class StripeIntentData {
     var ephemeralKey = await _getEphemeralKey(_customerID);
     var intentResp = await _createStripePaymentIntent(amount, _customerID);
 
-    Map<String, dynamic> setupIntent = {
+    Map<String, String> setupIntent = {
       'payment_intent_client_secret': intentResp['client_secret'],
       'customer': _customerID,
       'ephemeral_key': ephemeralKey,
       'payment_intent_id': intentResp['id']
     };
 
-    return setupIntent;
+    return IntentData.fromJSON(setupIntent);
   }
 
   Future<String> _getEphemeralKey(String customerID) async {

@@ -33,8 +33,8 @@ and get data from the API Like:
   ).getPaymentDetails(paymentIntentID);
 ```
 
-## Example to understand the uses cases 
+## Example to understand the uses cases
 
-<img src = "https://github.com/samrat19/stripe_intent_data/blob/master/example/Screenshot_20220523_161852.png" width = 200> <img src = "https://github.com/samrat19/stripe_intent_data/blob/master/example/Screenshot_20220523_161924.png" width = 200>  <img src = "https://github.com/samrat19/stripe_intent_data/blob/master/example/Screenshot_20220523_162038.png" width = 200> <img src = "https://github.com/samrat19/stripe_intent_data/blob/master/example/Screenshot_20220523_162232.png" width = 200>  
+<img src = "https://user-images.githubusercontent.com/30453784/169808192-da76ca7f-51d9-4304-88b7-cc98ac31a6cf.png" width = 200> <img src = "https://user-images.githubusercontent.com/30453784/169808199-8c12fdbe-c6ee-4cd6-be8a-71fbcf62cb1b.png" width = 200>  <img src = "https://user-images.githubusercontent.com/30453784/169808205-25fd5a08-54a9-44e1-bbd5-4676d3d01164.png" width = 200> <img src = "https://user-images.githubusercontent.com/30453784/169808208-3c6f9e62-e22e-4cda-963c-0f6379e8c984.png" width = 200>  
 
 

@@ -1,3 +1,6 @@
+## 0.1.9
+* fixes some bugs
+
 ## 0.1.8
 * fixes some bugs
 

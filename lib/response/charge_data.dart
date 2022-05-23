@@ -8,15 +8,16 @@ class ChargeData {
   String? receiptEmail;
   String? receiptUrl;
 
-  ChargeData(
-      {this.id,
-        this.amount,
-        this.balanceTransaction,
-        this.paid,
-        this.paymentIntent,
-        this.paymentMethod,
-        this.receiptEmail,
-        this.receiptUrl});
+  ChargeData({
+    this.id,
+    this.amount,
+    this.balanceTransaction,
+    this.paid,
+    this.paymentIntent,
+    this.paymentMethod,
+    this.receiptEmail,
+    this.receiptUrl,
+  });
 
   ChargeData.fromJson(Map<String, dynamic> json) {
     id = json['id'];

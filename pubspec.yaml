@@ -1,6 +1,6 @@
 name: stripe_intent_data
 description: A package to handle stripe payment's api responses and provides stripe intent details, charge details and customer details, it also create stipe cutomer ID if not available and returns equire data to process a payment and also returns a charge details
-version: 0.1.6
+version: 0.1.7
 homepage: https://github.com/samrat19/stripe_intent_data
 
 environment:

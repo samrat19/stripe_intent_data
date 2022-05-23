@@ -7,7 +7,6 @@ import 'response/charge_data.dart';
 import 'response/intent_data.dart';
 
 class StripeIntentData {
-
   final String stripeSecretKey;
   final String currency;
 
@@ -21,16 +20,24 @@ class StripeIntentData {
   }
 
   Future<IntentData> getStripeIntent(
-      String name,
-      String emailID,
-      String amount,
-      String? customerID,
-      ) async {
-    String _customerID = customerID ??
-        await _createCustomer(
-          name,
-          emailID,
-        );
+    String name,
+    String emailID,
+    String amount,
+    String? customerID,
+  ) async {
+    String? _customerID;
+
+    ///if customer ID is available then verify it
+    if (customerID != null) {
+      var searchResult = await _searchCustomer(customerID);
+      if (searchResult) {
+        _customerID = customerID;
+      } else {
+        _customerID = await _createCustomer(name, emailID);
+      }
+    } else {
+      _customerID = await _createCustomer(name, emailID);
+    }
 
     var ephemeralKey = await _getEphemeralKey(_customerID);
     var intentResp = await _createStripePaymentIntent(amount, _customerID);
@@ -92,6 +99,15 @@ class StripeIntentData {
         headers: header(),
         body: {'payment_method': 'pm_card_visa'});
     Map<String, dynamic> data = json.decode(response.body);
-    return ChargeData.fromJson(data['error']['payment_intent']['charges']['data'][0]);
+    return ChargeData.fromJson(
+        data['error']['payment_intent']['charges']['data'][0]);
+  }
+
+  Future<bool> _searchCustomer(String customerID) async {
+    var response = await http.get(
+      Uri.parse('https://api.stripe.com/v1/customers/$customerID'),
+      headers: header(),
+    );
+    return response.statusCode.toString().startsWith('2');
   }
 }

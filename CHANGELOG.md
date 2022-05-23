@@ -1,3 +1,6 @@
+## 0.1.8
+* fixes some bugs
+
 ## 0.1.7
 * checks for the valid customer ID and if it is not valid then it will create one
 

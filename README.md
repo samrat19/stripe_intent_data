@@ -5,9 +5,9 @@
 A new Flutter package to reduce the effort to write stripe codes for making intent 
 and get data from the API Like:
 
-## Create Customer ID
-## Get payment Intent Data
-## Get Charge Details
+* Create Customer ID
+* Get payment Intent Data
+* Get Charge Details
 
 ## Getting Started
 
@@ -32,5 +32,9 @@ and get data from the API Like:
     stripeSecretKey: stripeSecretKey,
   ).getPaymentDetails(paymentIntentID);
 ```
+
+## Example to understand the uses cases 
+
+<img src = "https://github.com/samrat19/stripe_intent_data/blob/master/example/Screenshot_20220523_161852.png" width = 200> <img src = "https://github.com/samrat19/stripe_intent_data/blob/master/example/Screenshot_20220523_161924.png" width = 200>  <img src = "https://github.com/samrat19/stripe_intent_data/blob/master/example/Screenshot_20220523_162038.png" width = 200> <img src = "https://github.com/samrat19/stripe_intent_data/blob/master/example/Screenshot_20220523_162232.png" width = 200>  
 
 
